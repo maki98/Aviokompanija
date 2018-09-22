@@ -1,0 +1,61 @@
+<%- include('../_layouts/adminheader') %>
+
+<h3 class="page-title">Izmeni let</h3>
+<a href="/admin/flights" class="btn btn-primary">Nazad na sve letove</a>
+<br><br>
+
+<form method="post" action="/admin/flights/edit-flight/<%= id %>">
+    <div class="form-group">
+        <label for="">Naziv</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="naziv">
+    </div>
+
+    <div class="form-group">
+            <label for="">Od</label>
+            <select name="from" class="form-control">
+                <% cities.forEach(function(city){ %>
+                    <option value="<%= city.slug %>"><%= city.title %></option>
+                <% }); %>
+    
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="">Do</label>
+            <select name="to" class="form-control">
+                <% cities.forEach(function(city){ %>
+                    <option value="<%= city.slug %>"><%= city.title %></option>
+                <% }); %>
+    
+            </select>
+        </div>
+
+    <div class="form-group">
+        <label for="">Datum</label>
+        <input type="text" class="form-control" name="date" value="<%= date %>" placeholder="datum">
+    </div>
+
+    <div class="form-group">
+        <label for="">Vreme</label>
+        <input type="text" class="form-control" name="time" value="<%= time %>" placeholder="vreme">
+    </div>
+
+    <div class="form-group">
+        <label for="">Cena karte</label>
+        <input type="text" class="form-control" name="price" value="<%= price %>" placeholder="cena">
+    </div>
+
+    <div class="form-group">
+        <label for="">Kapacitet mesta</label>
+        <input type="number" class="form-control" name="capacity" value="<%= capacity %>" placeholder="kapacitet">
+    </div>
+
+    <div class="form-group">
+        <label for="">Skraćenica za URL</label>
+        <input type="text" class="form-control" name="slug" placeholder="skraćenica" value="<%= slug %>">
+    </div>
+
+    <button class="btn btn-default">Potvrdi</button>
+
+    </form>
+<%- include('../_layouts/adminfooter') %>

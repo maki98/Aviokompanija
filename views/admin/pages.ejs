@@ -1,0 +1,45 @@
+<%- include('../_layouts/adminheader') %>
+
+<h3 class="page-title">Stranice</h3>
+<a href="/admin/pages/add-page" class="btn btn-primary">Dodaj novu stranicu</a>
+<br>
+
+<table class="table table-striped sorting">
+
+    <thead>
+        <tr class="home">
+            <th>Naziv</th>
+            <th>Dodaj</th>
+            <th>Ukloni</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% pages.forEach(function(page){ %>
+            <tr id="id_<%= page._id %>" class="<%= page.slug %>">
+                <td><%= page.title %></td>
+                <td></span><a href="/admin/pages/edit-page/<%= page._id %>">Izmeni</a></td>
+                <% if(page.slug == "home") { %>
+                    <td></td>
+                <% } else {%>
+                    <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= page._id %>">Ukloni</a></td>
+                <% }%>
+                
+            </tr>
+        <% }); %>
+    </tbody>
+
+</table>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $('tbody').sortable({
+        items: "tr:not('.home')",
+        placeholder: "ui-state-highlight",
+        update: function() {
+            var ids = $('tbody').sortable("serialize");
+            var url = "/admin/pages/reorder-pages";
+            $.post(url, ids);
+        }
+    })
+</script>
+<%- include('../_layouts/adminfooter') %>

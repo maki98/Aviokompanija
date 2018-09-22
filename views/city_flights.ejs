@@ -1,0 +1,26 @@
+<% include _layouts/header %>
+
+<div class="container-fluid">
+    <div>
+        <ul class="row p-1"></ul>
+            <h3 class="lead text-center"><%= title.toUpperCase() %></h3>
+            <hr>
+                <% flights.forEach(function(flight) { if(flight.from === title) %>
+                  <div>
+                      <ul class="row p-1">
+                        <li class="list-item col-md-8" style="list-style:none">
+                          <a href="/flights/<%= flight.from %>/<%= flight.slug %>"></a>
+                          <h3><%= flight.title%></h3>
+                          <a class="vd" href="/flights/<%= flight.from %>/<%= flight.slug %>">Pogledaj detalje...</a>
+                        </li>
+                        <h3><%= flight.date + "     " + flight.time %></h3>
+                      </ul>
+                    </div>
+                    <hr>
+              <% }); %>
+              </ul>
+          </div>
+        </hr>
+      </div>
+
+<% include _layouts/footer %>

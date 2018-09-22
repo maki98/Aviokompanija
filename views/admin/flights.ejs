@@ -1,0 +1,38 @@
+<%- include('../_layouts/adminheader') %>
+
+<h3 class="page-title">Letovi</h3>
+<a href="/admin/flights/add-flight" class="btn btn-primary">Dodaj novi let</a>
+<br>
+
+<% if(count > 0) { %>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr class="home">
+            <th>Let</th>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Izmeni</th>
+            <th>Ukloni</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% flights.forEach(function(flight){ %>
+            <tr>
+            <td><%= flight.title %></td>            
+            <td><%= flight.date %></td>
+            <td><%= flight.time %></td>
+            <td><a href="/admin/flights/edit-flight/<%= flight._id %>">Izmeni</a></td>
+            <td><a class="confirmDeletion" href="/admin/flights/delete-flight/<%= flight._id %>">Ukloni</a></td>
+        <% }); %>
+    </tbody>
+</table>
+
+
+<% } else { %>
+<h3 class="text-center">Nema dostupnih letova!</h3>
+
+<% } %>    
+
+<%- include('../_layouts/adminfooter') %>

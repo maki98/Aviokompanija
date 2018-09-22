@@ -1,0 +1,36 @@
+<%- include('../_layouts/adminheader') %>
+
+<h3 class="page-title">Gradovi</h3>
+<a href="/admin/cities/add-city" class="btn btn-primary">Dodaj novi grad za polazak</a>
+<br>
+
+<% if(count > 0) { %>
+
+<table class="table table-striped sorting">
+
+    <thead>
+        <tr class="home">
+            <th>Grad</th>
+            <th>Aerodrom</th>
+            <th>Ukloni</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% cities.forEach(function(city){ %>
+            <tr id="id_<%= city._id %>" class="<%= city.slug %>">
+                <td><%= city.title %></td>
+                <td><%= city.airportname %></td>
+                <td><a class="confirmDeletion" href="/admin/cities/delete-city/<%= city._id %>">Ukloni</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+
+</table>
+
+
+<% } else { %>
+    <h3 class="text-center">Još uvek nema dostupnih gradova! :(</h3>
+    
+    <% } %>  
+
+<%- include('../_layouts/adminfooter') %>

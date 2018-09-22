@@ -1,0 +1,18 @@
+<% include _layouts/header %>
+
+<div class = "row">
+
+    <h1 class="page-header"><%= flights.title %></h1>
+
+    <div class = "col-xs-12 col-md-7">
+        <p>Datum: <%= flights.date %></p>
+        <p>Vreme: <%= flights.time %></p>
+        <p>Cena karte: <%= flights.price %>RSD</p>
+        <p>Preostalo mesta: <%= flights.capacity %></p>
+
+        <p><b><a href="/cart/add/<%= flights.slug %>">Rezerviši</a></p>
+    </div>
+
+</div>
+
+<% include _layouts/footer %>

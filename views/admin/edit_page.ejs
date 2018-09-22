@@ -1,0 +1,26 @@
+<%- include('../_layouts/adminheader') %>
+
+<h3 class="page-title">Izmeni stranicu</h3>
+<a href="/admin/pages" class="btn btn-primary">Nazad na sve stranice</a>
+<br><br>
+
+<form method="post" action="/admin/pages/edit-page/<%= id %>">
+    <div class="form-group">
+        <label for="">Naziv</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="naziv">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Skraćenica za URL</label>
+        <input type="text" class="form-control" name="slug" value="<%= slug %>" placeholder="skraćenica">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Sadržaj</label>
+        <textarea name="content" class="form-control" id="ta" cols="30" rows="10" placeholder="sadržaj"><%= content %></textarea>
+    </div>
+
+    <button class="btn btn-default">Potvrdi</button>
+
+</form>
+<%- include('../_layouts/adminfooter') %>
