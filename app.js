@@ -92,6 +92,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+
 app.get('*', function(req, res, next) {
     res.locals.cart = req.session.cart;
     next();
@@ -100,6 +101,7 @@ app.get('*', function(req, res, next) {
 //set routes
 var pages = require('./routes/pages.js');
 var flights = require('./routes/flights.js');
+var reservations = require('./routes/reservations.js');
 var adminPages = require('./routes/admin_pages.js');
 var adminFlights = require('./routes/admin_flights.js');
 var adminCities = require('./routes/admin_cities.js');
@@ -107,6 +109,7 @@ var adminCities = require('./routes/admin_cities.js');
 
 app.use('/', pages);
 app.use('/flights', flights);
+app.use('/reservations', reservations);
 app.use('/admin/pages', adminPages);
 app.use('/admin/flights', adminFlights);
 app.use('/admin/cities', adminCities);

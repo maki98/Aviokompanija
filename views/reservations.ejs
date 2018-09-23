@@ -1,0 +1,27 @@
+<% include _layouts/header %>
+
+<div class = "row">
+    <h1 class="page-header">Rezerviši svoju kartu!</h1>
+
+    <h3 class="page-header"><%= flights.title %></h3>
+
+    <div class = "col-xs-12 col-md-7">
+        <p>Datum: <%= flights.date %></p>
+        <p>Vreme: <%= flights.time %></p>
+        <p>Cena karte: <%= flights.price %>USD</p>
+        <p>Preostalo mesta: <%= flights.capacity %></p>
+        <hr>
+        <a class = "btn btn-danger" href="/flights/<%= flights.from %>/<%= flights.slug %>">Odustani</a>
+        <form class = "btn btn-pp" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="seller@dezignerfotos.com">
+            <input type="hidden" name="item_name_1" value="<%= flights.title %>">
+            <input type="hidden" name="amount_1" value="<%= flights.price %>">
+            <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+    </form>
+
+</div>
+
+
+<% include _layouts/footer %>
